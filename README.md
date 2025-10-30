@@ -75,24 +75,7 @@ const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(mo
 fetch(url)
   .then(res => res.json())
   .then(data => {
-    const result = document.getElementById('result');
-
-    if (data.Response === 'False') {
-      result.innerHTML = `<p style="color:red;">❌ ${data.Error || 'Movie not found.'}</p>`;
-      return;
-    }
-
-    result.innerHTML = `
-      <div style="display:flex; gap:16px; align-items:flex-start;">
-        <img src="${data.Poster}" alt="Poster" width="160" onerror="this.src=''">
-        <div>
-          <h2>${data.Title} (${data.Year})</h2>
-          <p><strong>Genre:</strong> ${data.Genre}</p>
-          <p><strong>Rated:</strong> ${data.Rated}</p>
-          <p><strong>IMDB:</strong> ${data.imdbRating}</p>
-          <p>${data.Plot}</p>
-        </div>
-      </div>`;
+    //Build your output display card here. Get creative !
   })
   .catch(err => {
     console.error(err);
