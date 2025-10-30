@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Posts Display Exercise</title>
+  <!-- ✅ Bootstrap CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <style>
+    body {
+      background-color: #f5f7fa;
+      padding: 20px;
+    }
+    #postsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <h1 class="mb-4">📜 Posts from JSONPlaceholder</h1>
+    <p id="errorMsg" class="text-danger d-none">❌ Failed to load posts.</p>
+
+    <button  class="btn btn-primary mb-4" onclick="loadPosts()">Load Posts</button>
+    <!-- Container for posts -->
+    <div id="postsContainer"></div>
+  </div>
+
+  <script>
+    /****************************************************
+     🎯 GOAL:
+     Step 1 → Use the static `postsData` array below to 
+              display posts as Bootstrap cards.
+
+     Step 2 → Replace the static data with a fetch call to:
+               https://jsonplaceholder.typicode.com/posts
+
+     Step 3 → (Challenge) Add a random cat image from:
+               https://cataas.com/cat
+    *****************************************************/
+
+    
+
+    // Function to display cards on the page
+    function displayPosts(posts) {
+      const container = document.getElementById('postsContainer');
+      container.innerHTML = ''; // clear old content
+
+      for(let i =0;i < posts.length;i++){
+        post = posts[i];
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.width = '18rem';
+        card.innerHTML = `
+          <img src="https://randomuser.me/api/portraits/thumb/lego/2.jpg" class="card-img-top" alt="Random Cat">
+          <div class="card-body">
+            <h5 class="card-title">${post.title}</h5>
+            <p class="card-text">${post.body}</p>
+            <p class="text-muted">User ID: ${post.userId}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    // Step 1: Initially load static posts
+    function loadPosts(){
+    // 🧱 Step 1: Replcae the below static data by fetching data from 
+    //  https://jsonplaceholder.typicode.com/posts/
+    const postsData = [
+      {
+        userId: 1,
+        id: 1,
+        title: "Static Post One",
+        body: "This is the first static post. You’ll replace this data later using the API."
+      },
+      {
+        userId: 2,
+        id: 2,
+        title: "Static Post Two",
+        body: "This post is also hardcoded. Soon you’ll load real posts from JSONPlaceholder."
+      },
+      {
+        userId: 3,
+        id: 3,
+        title: "Static Post Three",
+        body: "After mastering this, you’ll fetch random cat images for each post!"
+      }
+    ];
+
+        displayPosts(postsData);
+    }
+
+    /*
+      ⚡ Step 2 CHALLENGE:
+      - Fetch a random cat image for each post instead of the lego image.
+      - Hit the https://api.thecatapi.com/v1/images/search API and fetch an url and display different cat image for each post
+
+
+      Step 3:
+      - Your code right now will display all posts from api - 100 or more
+      - Find a way to display only 10 or 15 posts. Check the for loop!
+    */
+  </script>
+</body>
+</html>
