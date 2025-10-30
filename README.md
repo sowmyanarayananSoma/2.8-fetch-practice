@@ -108,6 +108,4 @@ fetch(url)
 ### ⚡ Challenges (Optional)
 
 * Add a **dropdown** to filter by `movie`, `series`, or `episode` and include it via `&type=` in the URL
-* Support pressing **Enter** to trigger search
 * Show a **loading…** message while fetching
-* Add a **second fetch** to display **top 3 search results** using `s=` instead of `t=` (e.g., `&s=Inception`) and let the user click one to load full details
